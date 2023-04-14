@@ -18,18 +18,27 @@
   </head>
 
   <body>
+
+    {% include "nav.html"%}
+
     <div class="container">
-      <img
+      
+      <div class="row">
+        
+        <div class="col-4" style="height: 125px; width: 125px;">
+        <img
         class="img-fluid"
         src="static/chaynztech-01.png"
         alt="Company Logo"
         title="ChaynzTech"
-        width="140"
-      />
-      <!-- height="125" -->
+        />
+        </div>
 
-      <h1 class="text-center mt-3 mb-5"> {{company_name}} Careers</h1>
-
+      <h1 class="text-center mt-3 mb-5 col-8" style="padding-top: 30px;padding-left: 140px;"> {{company_name}} Careers</h1>
+      
+      </div>
+      
+      
       <hr />
 
       <h2 class="text-center mt-5 mb-5">About Us</h2>
