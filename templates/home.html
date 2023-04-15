@@ -17,68 +17,61 @@
   </head>
 
   <body>
-
     {% include "nav.html"%}
 
     <div class="container">
-      
       <div class="row">
-        
-        <div class="col-4" style="height: 125px; width: 125px;">
-        <img
-        class="img-fluid"
-        src="static/chaynztech-01.png"
-        alt="Company Logo"
-        title="ChaynzTech"
-        />
+        <div class="col-4" style="height: 125px; width: 125px">
+          <img
+            class="img-fluid"
+            src="static/chaynztech-01.png"
+            alt="Company Logo"
+            title="ChaynzTech"
+          />
         </div>
 
-      <h1 class="text-center mt-3 mb-5 col-8" style="padding-top: 30px;padding-left: 140px;"> {{company_name}} Careers</h1>
-      
+        <h1
+          class="text-center mt-3 mb-5 col-8"
+          style="padding-top: 30px; padding-left: 140px"
+        >
+          {{company_name}} Careers
+        </h1>
       </div>
-      
-      
+
       <hr />
 
       <h2 class="text-center mt-5 mb-5">About Us</h2>
+      
 
-      <p class="lead">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, eum
-        quis impedit facere reiciendis sint quae esse pariatur praesentium
-        repellendus sequi, inventore voluptas voluptatem omnis maxime, deleniti
-        sunt dolor magni.Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Veniam, eum quis impedit facere reiciendis sint quae esse pariatur
-        praesentium repellendus sequi, inventore voluptas voluptatem omnis
-        maxime, deleniti sunt dolor magni.Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Veniam, eum quis impedit facere reiciendis sint quae
-        esse pariatur praesentium repellendus sequi, inventore voluptas
-        voluptatem omnis maxime, deleniti sunt dolor magni.Lorem ipsum dolor sit
-        amet consectetur adipisicing elit. Veniam, eum quis impedit facere
-        reiciendis sint quae esse pariatur praesentium repellendus sequi,
-        inventore voluptas voluptatem omnis maxime, deleniti sunt dolor magni.
-      </p>
+      <div class="row" style="margin-top: 70px; margin-bottom: 70px;">
+        <div class="col-md-6 ">  
+        <p class="lead">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, eum
+          quis impedit facere reiciendis sint quae esse pariatur praesentium
+          repellendus sequi, inventore voluptas voluptatem omnis maxime, deleniti
+          sunt dolor magni.Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Veniam, eum quis impedit facere reiciendis sint quae esse pariatur
+          praesentium repellendus sequi, inventore voluptas voluptatem omnis
+          maxime, deleniti sunt dolor magni.Lorem ipsum dolor sit amet consectetur
+          adipisicing elit.
+        </p>
+        </div>
+        <div class="d-none d-md-block col-md-6 text-center">
+          <img src="static/hero_1.jpg" alt="Paragraph_Picture" style="height: 300px;width: 500px;">
+        </div>
+      </div>
 
       <h2 class="text-center mt-5 mb-5">Open Positions</h2>
 
       <div>
-
-        {% for job in jobs %}
-            {% include "job_item.html" %}
-        {% endfor %}
-
+        {% for job in jobs %} {% include "job_item.html" %} {% endfor %}
       </div>
 
       <div class="text-center">
         <button class="btn btn-primary btn-lg">Contact Us</button>
-        <p class="mt-4">
-          &LT;&LT;&LT; &copy;
-          <a href="about.html"> SUBHAN SOHAIR </a> &gt;&gt;&gt;
-        </p>
       </div>
     </div>
 
     {% include "footer.html"%}
-
-
   </body>
 </html>
