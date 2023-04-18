@@ -1,2 +1,4 @@
-gunicorn==20.0.4
-Flask==2.2.3
+gunicorn
+Flask
+sqlalchemy
+pymysql
