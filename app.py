@@ -5,17 +5,19 @@ from database import load_jobs_from_db
 app = Flask(__name__)
 
 
-JOBS = load_jobs_from_db()
+# JOBS = load_jobs_from_db()
 
 
 @app.route("/")
 def hello_world():
+    JOBS = load_jobs_from_db()
     # return "Hello Subhan"
     return render_template("home.html", jobs=JOBS, company_name="Chaynz Tech")
 
 
 @app.route("/api/jobs")
 def list_jobs():
+    JOBS = load_jobs_from_db()
     return jsonify(JOBS)
 
 
