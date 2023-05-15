@@ -1,0 +1,49 @@
+
+
+    <h3 class="mb-4 mt-4">Application Form</h3>
+
+    <form action="/job/{{job['id']}}/apply" method="post">
+
+    <div class="mb-3">
+      <label>Full Name</label>
+      <br />
+      <input type="text" name="full_name" placeholder="Subhan Sohair" />
+    </div>
+
+    <div class="mb-3">
+      <label>Email</label>
+      <br />
+      <input type="text" name="email" placeholder="SubhanSohair@gmail.com" />
+    </div>
+
+    <div class="mb-3">
+      <label>GitHub URL</label>
+      <br />
+      <input
+        type="text"
+        name="GitHub_URL"
+        placeholder="https://github.com/SubhanSohair"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>Education</label>
+      <br />
+      <textarea name="education"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label>Work Experience</label>
+      <br />
+      <textarea name="work_experience"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label>Resume URL</label>
+      <br />
+      <input type="text" name="resume_url" />
+    </div>
+
+    <input  class="btn btn-primary btn-lg mt-3" type="submit"  />
+  </form>
+
