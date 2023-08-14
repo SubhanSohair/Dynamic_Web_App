@@ -1,8 +1,8 @@
-from flask import Flask, render_template, jsonify, request 
+from flask import Flask, render_template, jsonify, request, session, redirect, url_for 
 from database import load_jobs_from_db, load_job_from_db, add_application_to_db
 
 app = Flask(__name__)
-
+app.secret_key = "hello"
 
 @app.route("/")
 def hello_world():
@@ -36,9 +36,42 @@ def apply_to_job(id):
 
 
 
-@app.route("/admin")
+# ADMIN AUTH 
+
+@app.route("/admin", methods = ['POST','GET'])
 def signin():
-    return render_template("signin.html")
+    if request.method == "POST":
+        user = request.form['email']
+        session['user'] = user
+        return redirect('/dashboard')
+    else:
+        if 'user' in session:
+            return redirect('/dashboard')
+        return render_template('signin.html')
+        
+
+#ADMIN DASHBOARD
+
+@app.route("/dashboard")
+def admin():
+    if 'user' in session:
+        return render_template("Admin.html")
+    else:
+        return redirect('/admin')
+
+
+#LOGOUT FROM ADMIN
+
+
+@app.route("/logout")
+def logout():
+        session.pop('user',None)
+        return redirect('/admin')
+
+
+
+
+
 
 
 
