@@ -58,3 +58,18 @@ def add_application_to_db(job_id, data):
         query = text(f"INSERT INTO applications (job_id, full_name, email, GitHub_URL, education, work_experience, resume_url) VALUES ('{job_id}', '{data['full_name']}', '{data['email']}', '{data['GitHub_URL']}', '{data['education']}', '{data['work_experience']}', '{data['resume_url']}')")
 
         conn.execute(query)
+
+
+## USER AUTH
+
+def load_admin_from_db():
+
+    with engine.connect() as conn:
+        result = conn.execute(text("select * from admin_data"))
+        result_all = result.all()
+
+        Admin_data = []
+        Admin_data.append(result_all[0][0])
+        Admin_data.append(result_all[0][1])
+        
+        return Admin_data

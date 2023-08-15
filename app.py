@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for 
-from database import load_jobs_from_db, load_job_from_db, add_application_to_db
+from database import load_jobs_from_db, load_job_from_db, add_application_to_db,  load_admin_from_db
 
 app = Flask(__name__)
 app.secret_key = "hello"
@@ -41,9 +41,22 @@ def apply_to_job(id):
 @app.route("/admin", methods = ['POST','GET'])
 def signin():
     if request.method == "POST":
-        user = request.form['email']
-        session['user'] = user
-        return redirect('/dashboard')
+
+        ##
+        Admin_data = load_admin_from_db()
+        if Admin_data[0] == request.form['email'] and Admin_data[1] == request.form['password']:
+
+        ##
+
+            user = request.form['email']
+            session['user'] = user
+            return redirect('/dashboard')
+        
+        #
+        else:
+            return render_template('signin.html')
+        
+        #
     else:
         if 'user' in session:
             return redirect('/dashboard')
@@ -55,7 +68,8 @@ def signin():
 @app.route("/dashboard")
 def admin():
     if 'user' in session:
-        return render_template("Admin.html")
+        name = session['user']
+        return render_template("Admin.html", name = name)
     else:
         return redirect('/admin')
 
@@ -63,17 +77,11 @@ def admin():
 #LOGOUT FROM ADMIN
 
 
-@app.route("/logout")
+@app.route("/logout",methods = ['POST','GET'])
 def logout():
         session.pop('user',None)
         return redirect('/admin')
 
-
-
-
-
-
-
-
+##RUN
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
