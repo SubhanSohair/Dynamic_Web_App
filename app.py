@@ -69,7 +69,8 @@ def signin():
 def admin():
     if 'user' in session:
         name = session['user']
-        return render_template("Admin.html", name = name)
+        JOBS = load_jobs_from_db()
+        return render_template("Admin.html", name = name, jobs=JOBS)
     else:
         return redirect('/admin')
 
@@ -81,6 +82,8 @@ def admin():
 def logout():
         session.pop('user',None)
         return redirect('/admin')
+
+
 
 
 

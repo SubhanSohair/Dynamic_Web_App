@@ -155,8 +155,8 @@
                     </a>
                     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
                         <li class="nav-item">
-                            <a href="/dashboard" class="nav-link active py-3 border-bottom rounded-0" aria-current="page"
-                                title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
+                            <a href="/dashboard" class="nav-link py-3 border-bottom rounded-0" aria-current="page"
+                                title="Home" data-bs-toggle="tooltip" data-bs-placement="right"  data-toggle="tab">
                                 <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Home">
                                     <use xlink:href="#home" />
                                 </svg>
@@ -180,7 +180,7 @@
                         </li>
                         <li>
                             <a href="/operations" class="nav-link py-3 border-bottom rounded-0" title="Operations"
-                                data-bs-toggle="tooltip" data-bs-placement="right">
+                                data-bs-toggle="tooltip" data-bs-placement="right" data-toggle="tab">
                                 <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Operations">
                                     <use xlink:href="#grid" />
                                 </svg>
@@ -221,7 +221,7 @@
     <div class="col-9 container">
 
 
-        <div class="container text-center" style="margin-left: 30px;">
+        <div class="container text-center" style="margin-left: 20px;">
             <h1 class="text-center mt-3 mb-4 " style="padding-top: 30px">
                 Chaynz Tech Careers
             </h1>
@@ -253,6 +253,10 @@
             })
         })()
     </script>
+    <script>$('#myTab a').on('click', function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+      })</script>
 </body>
 
 </html>

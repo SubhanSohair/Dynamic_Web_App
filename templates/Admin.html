@@ -7,4 +7,47 @@
 <h2 class="mt-2">
   Welcome {{name}}
 </h2>
+
+<div class="mt-5" style="margin-left: auto; margin-right: auto">
+
+  {% for job in jobs %} 
+  <div style="padding-bottom: 20px;" role="button" data-bs-toggle="collapse" data-bs-target="#job.id" aria-expanded="false" aria-controls="job.id">
+
+  <div style="margin-bottom: 20px; padding-bottom: 8px" style="margin-left: auto; margin-right: auto" class="shadow border-bottom row">
+    <div class="col-10" style="margin-left: auto; margin-right: auto">
+      <h4 style="color: rgb(120, 120, 120); margin-bottom: 5px" style="margin-left: auto; margin-right: auto"  >{{job.title}}</h4>
+  
+      <div><b>Location : </b> {{job['location']}}</div>
+  
+      {% if 'salary' in job %}
+      <div><b>Salary : </b> {{job['currency']}} {{job['salary']}}</div>
+      {% endif %}
+
+      <div class="collapse" id="job.id">
+        <div class="card card-body">
+          <h4>Responsibilities</h4>
+      <ul>
+        {% for line in job.responsibilties.split("\n") %}
+        <li>{{line}}</li>
+        {% endfor %}
+      </ul>
+
+      <h4>Requirements</h4>
+      <ol>
+        {% for line in job.requirements.split("\n") %}
+        <li>{{line}}</li>
+        {% endfor %}
+      </ol>
+
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+</div>
+
+  {% endfor %}
+</div>
+
 {% endblock %}
