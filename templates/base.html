@@ -155,7 +155,7 @@
                     </a>
                     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active py-3 border-bottom rounded-0" aria-current="page"
+                            <a href="/dashboard" class="nav-link active py-3 border-bottom rounded-0" aria-current="page"
                                 title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
                                 <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Home">
                                     <use xlink:href="#home" />
@@ -179,9 +179,9 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link py-3 border-bottom rounded-0" title="Products"
+                            <a href="/operations" class="nav-link py-3 border-bottom rounded-0" title="Operations"
                                 data-bs-toggle="tooltip" data-bs-placement="right">
-                                <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Products">
+                                <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Operations">
                                     <use xlink:href="#grid" />
                                 </svg>
                             </a>
@@ -209,7 +209,7 @@
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="{{url_for('logout')}}">Sign out</a></li>
+                            <li><a class="dropdown-item" href="/logout">Sign out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -221,17 +221,15 @@
     <div class="col-9 container">
 
 
-        <div class="container text-center">
-            <h1 class="text-center mt-3 mb-5 " style="padding-top: 30px">
+        <div class="container text-center" style="margin-left: 30px;">
+            <h1 class="text-center mt-3 mb-4 " style="padding-top: 30px">
                 Chaynz Tech Careers
             </h1>
 
             <hr />
 
             <div>
-                <h2>
-                    Welcome {{name}}
-                </h2>
+               
                 {% block content %} 
                 
                 {% endblock %}

@@ -65,7 +65,7 @@ def signin():
 
 #ADMIN DASHBOARD
 
-@app.route("/dashboard")
+@app.route("/dashboard",methods = ['POST','GET'])
 def admin():
     if 'user' in session:
         name = session['user']
@@ -81,6 +81,15 @@ def admin():
 def logout():
         session.pop('user',None)
         return redirect('/admin')
+
+
+
+@app.route("/operations",methods = ['POST','GET'])
+def operations():
+    name = session['user']
+    return render_template("operations.html", name = name)
+
+
 
 ##RUN
 if __name__ == "__main__":
