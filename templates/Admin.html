@@ -11,7 +11,7 @@
 <div class="mt-5" style="margin-left: auto; margin-right: auto">
 
   {% for job in jobs %} 
-  <div style="padding-bottom: 20px;" role="button" data-bs-toggle="collapse" data-bs-target="#job.id" aria-expanded="false" aria-controls="job.id">
+    <div class="card btn btn-secondary" style="padding-bottom: 20px;" role="button" data-bs-toggle="collapse" data-bs-target="#job.id" aria-expanded="false" aria-controls="job.id">
 
   <div style="margin-bottom: 20px; padding-bottom: 8px" style="margin-left: auto; margin-right: auto" class="shadow border-bottom row">
     <div class="col-10" style="margin-left: auto; margin-right: auto">
@@ -23,7 +23,7 @@
       <div><b>Salary : </b> {{job['currency']}} {{job['salary']}}</div>
       {% endif %}
 
-      <div class="collapse" id="job.id">
+      <div class="collapse mt-5" id="job.id">
         <div class="card card-body">
           <h4>Responsibilities</h4>
       <ul>

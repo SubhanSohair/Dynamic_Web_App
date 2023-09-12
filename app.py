@@ -93,6 +93,11 @@ def operations():
     return render_template("operations.html", name = name)
 
 
+@app.route("/addjob",methods = ['POST','GET'])
+def addjob():
+    name = session['user']
+    return render_template("add_job.html", name = name)
+
 
 ##RUN
 if __name__ == "__main__":
