@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for 
-from database import load_jobs_from_db, load_job_from_db, add_application_to_db,  load_admin_from_db, add_job_to_db
+from database import load_jobs_from_db, load_job_from_db, add_application_to_db,  load_admin_from_db, add_job_to_db, delete_job_from_db
 
 app = Flask(__name__)
 app.secret_key = "hello"
@@ -84,7 +84,7 @@ def logout():
         return redirect('/admin')
 
 
-
+# CRUD OPERATIONS
 
 
 @app.route("/operations",methods = ['POST','GET'])
@@ -108,6 +108,20 @@ def job_added():
 
     return render_template("job_added.html", data = data)
 
+
+
+@app.route("/deletejob",methods = ['POST','GET'])
+def deletejob():
+    name = session['user']
+    JOBS = load_jobs_from_db()
+    return render_template("delete_job.html", jobs = JOBS)
+
+
+
+@app.route("/jobdeleted/<id>",methods = ['POST','GET'])
+def job_deleted(id):
+        delete_job_from_db(id)
+        return redirect('/deletejob')
 
 
 

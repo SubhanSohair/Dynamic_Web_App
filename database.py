@@ -85,3 +85,18 @@ def add_job_to_db(data):
 
         conn.execute(query)
   
+
+# DELETE JOB FROM DB 
+  
+def delete_job_from_db(id):
+
+    with engine.connect() as conn:
+
+        query = text(f"DELETE FROM jobs WHERE (id ={id} );")
+
+        conn.execute(query)
+
+
+# DELETE FROM jobs WHERE (`id` = '6');
+
+
