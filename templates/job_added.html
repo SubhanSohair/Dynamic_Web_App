@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block title %}Admin - JOB ADDED{% endblock %} {%
+block content %}
+
+<div class="container mb-2 mt-5">
+  <p class="lead mb-5">
+    Job Opening for the role of <b>{{data.title}}</b> has been added.
+  </p>
+  <p class="lead mt-0">{{data.location}}</p>
+
+  <h4>Responsibilities</h4>
+  <p>{{data.responsibilities}}</p>
+  <h4>Requirements</h4>
+  <p>{{data.requirements}}</p>
+  <h4>Salary</h4>
+  <p>{{data.currency}}{{data.salary}}</p>
+</div>
+
+{% endblock %}

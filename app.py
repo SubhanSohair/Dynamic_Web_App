@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for 
-from database import load_jobs_from_db, load_job_from_db, add_application_to_db,  load_admin_from_db
+from database import load_jobs_from_db, load_job_from_db, add_application_to_db,  load_admin_from_db, add_job_to_db
 
 app = Flask(__name__)
 app.secret_key = "hello"
@@ -97,6 +97,19 @@ def operations():
 def addjob():
     name = session['user']
     return render_template("add_job.html", name = name)
+
+
+
+@app.route("/job_added", methods = ['POST','GET'])
+def job_added():
+    data = request.form
+
+    add_job_to_db(data)
+
+    return render_template("job_added.html", data = data)
+
+
+
 
 
 ##RUN

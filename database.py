@@ -73,3 +73,15 @@ def load_admin_from_db():
         Admin_data.append(result_all[0][1])
         
         return Admin_data
+    
+
+# ADD JOB TO DB 
+  
+def add_job_to_db(data):
+
+    with engine.connect() as conn:
+
+        query = text(f"INSERT INTO jobs (title, location, salary, currency, responsibilties, requirements)  VALUES ('{data['title']}', '{data['location']}', '{data['salary']}', '{data['currency']}', '{data['responsibilities']}', '{data['requirements']}')")
+
+        conn.execute(query)
+  
