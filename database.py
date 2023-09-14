@@ -99,4 +99,31 @@ def delete_job_from_db(id):
 
 # DELETE FROM jobs WHERE (`id` = '6');
 
+# 
+# 
+# 
 
+# LOAD APPLICATIONS FORM DB
+
+
+
+apps_col_name = ('id', 'job_name', 'full_name', 'email',
+            'GitHub_URL', 'eduction', 'work_experience', 'resume_url')
+
+
+def load_apps_from_db():
+
+    with engine.connect() as conn:
+        result = conn.execute(text("""SELECT applications.id, jobs.title AS job_name, applications.full_name, applications.email, applications.GitHub_URL,  applications.education, applications.work_experience, applications.resume_url
+                                      FROM applications
+                                      INNER JOIN jobs ON applications.job_id = jobs.id;
+                                      """))
+        result_all = result.all()
+
+        apps = []
+
+        for row in result_all:
+            load_dict = dict(zip(apps_col_name, row))
+            apps.append(load_dict)
+
+        return apps

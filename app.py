@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for 
-from database import load_jobs_from_db, load_job_from_db, add_application_to_db,  load_admin_from_db, add_job_to_db, delete_job_from_db
+from database import load_jobs_from_db, load_job_from_db, add_application_to_db,  load_admin_from_db, add_job_to_db, delete_job_from_db, load_apps_from_db
 
 app = Flask(__name__)
 app.secret_key = "hello"
@@ -124,6 +124,11 @@ def job_deleted(id):
         return redirect('/deletejob')
 
 
+@app.route("/viewapplications",methods = ['POST','GET'])
+def viewapplications():
+    name = session['user']
+    applications = load_apps_from_db()
+    return render_template("viewapplications.html" , applications = applications)
 
 
 ##RUN
