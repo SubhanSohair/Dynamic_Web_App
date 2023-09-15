@@ -108,7 +108,7 @@ def delete_job_from_db(id):
 
 
 apps_col_name = ('id', 'job_name', 'full_name', 'email',
-            'GitHub_URL', 'eduction', 'work_experience', 'resume_url')
+            'GitHub_URL', 'education', 'work_experience', 'resume_url')
 
 
 def load_apps_from_db():
@@ -127,3 +127,22 @@ def load_apps_from_db():
             apps.append(load_dict)
 
         return apps
+    
+
+# DELETE APPLICATIONS FROM DB 
+  
+def delete_app_from_db(id):
+
+    with engine.connect() as conn:
+
+        query = text(f"DELETE FROM applications WHERE (id ={id} );")
+
+        conn.execute(query)
+
+
+# UPDATE "approvals" COlUMN IN DB TO APPROVE APPLICANTS
+
+
+
+# UPDATE `dynamicwebapp`.`applications` SET `approvals` = 'Approved' WHERE (`id` = '2');
+

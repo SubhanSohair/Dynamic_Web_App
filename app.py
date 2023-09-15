@@ -1,5 +1,7 @@
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for 
-from database import load_jobs_from_db, load_job_from_db, add_application_to_db,  load_admin_from_db, add_job_to_db, delete_job_from_db, load_apps_from_db
+from database import load_jobs_from_db, load_job_from_db, add_application_to_db,  load_admin_from_db, add_job_to_db, delete_job_from_db, load_apps_from_db, delete_app_from_db
+from auto_email import send_email_to_applicant
+
 
 app = Flask(__name__)
 app.secret_key = "hello"
@@ -129,6 +131,24 @@ def viewapplications():
     name = session['user']
     applications = load_apps_from_db()
     return render_template("viewapplications.html" , applications = applications)
+
+
+@app.route("/deleteapp/<id>",methods = ['POST','GET'])
+def delete_app(id):
+        delete_app_from_db(id)
+        return redirect('/viewapplications')
+
+
+
+#
+# This route fetches email and send email through the function written in auto_email.py
+#
+@app.route("/approveapp/<email>",methods = ['POST','GET'])
+def send_email(email):
+        send_email_to_applicant(email)
+        return redirect('/viewapplications')
+
+
 
 
 ##RUN

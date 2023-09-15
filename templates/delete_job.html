@@ -27,8 +27,8 @@
         <td>{{job.title}}</td>
         <td>{{job['location']}}</td>
         <td>
-            <form action="/jobdeleted/{{job.id}}" method="post">
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <form onsubmit="myFunction()" action="/jobdeleted/{{job.id}}" method="post">
+            <button id="deleteBtn" type="submit" class="btn btn-danger">Delete</button>
             </form>
         </td>
       </tr>
@@ -40,5 +40,16 @@
 <div style="padding-bottom: 20px;" >
 
 </div>
+
+
+<script>
+  function myFunction() {
+    alert("The Job was deleted");
+    location.reload();
+
+  }
+  </script>
+  
+  
 
 {% endblock %}
