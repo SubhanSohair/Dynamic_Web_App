@@ -31,8 +31,11 @@
                                         
 # print(pw_hashed)
 
+import os
 
+gmail_password = os.environ['gmail_password']
 
+print(gmail_password)
 
 
 
