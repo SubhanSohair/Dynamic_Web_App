@@ -151,6 +151,20 @@ def approve_app_in_db(id):
 
         conn.execute(query)
 
+# UPDATES JOB INFO IN DB
 
-# UPDATE applications SET approval = 'Approved' WHERE (id = {id});
 
+def update_job_to_db(id, data):
+
+    with engine.connect() as conn:
+
+        query = text(f"UPDATE jobs SET title = '{data['title']}', location = '{data['location']}' , salary = '{data['salary']}' , currency = '{data['currency']}',  responsibilties = '{data['responsibilties']}' , requirements = '{data['requirements']}' WHERE (id = {id});")
+
+        conn.execute(query)
+
+
+# UPDATE jobs SET title = 'new', location = 'new', salary = '52222', responsibilties = 'lssmslmslm', requirements = 'mlcmsclmslc' WHERE (id = {id});
+
+
+
+# INSERT INTO applications (job_id, full_name, email, GitHub_URL, education, work_experience, resume_url) VALUES ('{data['full_name']}', '{data['email']}', '{data['GitHub_URL']}', '{data['education']}', '{data['work_experience']}', '{data['resume_url']}')

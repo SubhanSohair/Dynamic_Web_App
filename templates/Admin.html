@@ -31,16 +31,16 @@
 
     </summary>
 
-      <div class=" mt-5 mb-3" id="job.id">
+      <div style="text-align: justify;" class=" mt-5 mb-3" id="job.id">
         <div class="card card-body">
-          <h4>Responsibilities</h4>
+          <h4 style="text-align: center;">Responsibilities</h4>
       <ul>
         {% for line in job.responsibilties.split("\n") %}
         <li>{{line}}</li>
         {% endfor %}
       </ul>
 
-      <h4>Requirements</h4>
+      <h4 style="text-align: center;">Requirements</h4>
       <ol>
         {% for line in job.requirements.split("\n") %}
         <li>{{line}}</li>

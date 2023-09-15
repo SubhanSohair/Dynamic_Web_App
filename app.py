@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for 
-from database import load_jobs_from_db, load_job_from_db, add_application_to_db,  load_admin_from_db, add_job_to_db, delete_job_from_db, load_apps_from_db, delete_app_from_db, approve_app_in_db
+from database import load_jobs_from_db, load_job_from_db, add_application_to_db,  load_admin_from_db, add_job_to_db, delete_job_from_db, load_apps_from_db, delete_app_from_db, approve_app_in_db, update_job_to_db
 from auto_email import send_email_to_applicant
 
 
@@ -150,6 +150,35 @@ def send_email(id,email,name,title):
         return redirect('/viewapplications')
 
 
+# ROUTE TO LIST JOBS
+
+
+@app.route("/update",methods = ['POST','GET'])
+def update():
+    name = session['user']
+    JOBS = load_jobs_from_db()
+    return render_template("update.html", jobs = JOBS)
+
+
+
+# ROUTE TO UPDATE JOBS
+
+
+@app.route("/job/<id>/update", methods = ['POST','GET'])
+def update_job(id):
+    name = session['user']
+    JOB = load_job_from_db(id)
+    return render_template("update_job.html", job = JOB)
+
+
+
+@app.route("/jobupdated/<id>", methods = ['POST','GET'])
+def job_updated(id):
+    data = request.form
+
+    update_job_to_db(id, data)
+
+    return redirect('/update')
 
 
 ##RUN

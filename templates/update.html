@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Admin - Update jobs{% endblock %}
+
+{% block content %}
+
+
+
+<h1 class="lead" style="margin-bottom: 50px; font-size: xx-large;"> <b> Update Jobs </b></h1>
+
+
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Location</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+
+    {% for job in jobs %} 
+
+    <tbody>
+      <tr>
+        <th scope="row">{{job.id}}</th>
+        <td>{{job.title}}</td>
+        <td>{{job['location']}}</td>
+        <td>
+            <form action="/job/{{job.id}}/update" method="post">
+            <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </td>
+      </tr>
+    </tbody>
+    {% endfor %}
+
+</table>
+
+<div style="padding-bottom: 20px;" >
+
+</div>
+
+
+{% endblock %}

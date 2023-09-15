@@ -114,7 +114,7 @@
 
 
 
-
+<!-- 
     <details>
       <summary><mark> Quick Links</mark></summary>
       <p>
@@ -128,4 +128,129 @@
 
 
 
+ -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {% extends "base.html" %}
+
+{% block title %}Admin - Update Job{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #2f2f2f;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: rgba(34, 34, 34, 0.254);
+        border-radius: 0px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #444;
+        border-radius: 4px;
+        background-color: #333;
+        color: #fff;
+    }
+
+    select {
+        background-color: #333;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    .btn {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+
+<div class="container">
+    <h2 style="margin-bottom: 30px;">Update "{{job.title}}" Job</h2>
+    <form method="post" action="" >
+        <div class="form-group">
+            <label for="title">Job Title:</label>
+            <input value="{{job.title}}" type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="location">Location:</label>
+            <input value="{{job.location}}" type="text" id="location" name="location" required>
+        </div>
+        <div class="form-group">
+            <label for="salary">Salary:</label>
+            <input value="{{job.salary}}" type="text" id="salary" name="salary" required>
+        </div>
+        <div class="form-group">
+            <label for="currency">Currency:</label>
+            <select id="currency" name="currency" required>
+                <option value="{{job.currency}}">Rs.</option>
+                <option value="{{job.currency}}">$</option>
+                <option value="{{job.currency}}">£</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="responsibilities">Responsibilities:</label>
+             <textarea value="{{job.responsibilties}}" id="responsibilities" name="responsibilities" rows="4" required> </textarea>
+        </div>
+        <div class="form-group">
+            <label for="requirements">Requirements:</label>
+            <textarea id="requirements" name="requirements" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn">Submit</button>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}
