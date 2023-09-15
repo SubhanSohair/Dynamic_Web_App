@@ -143,10 +143,10 @@ def delete_app(id):
 #
 # This route fetches email and send email through the function written in auto_email.py
 #
-@app.route("/approveapp/<id>/<email>",methods = ['POST','GET'])
-def send_email(id,email):
+@app.route("/approveapp/<id>/<email>/<name>/<title>",methods = ['POST','GET'])
+def send_email(id,email,name,title):
         approve_app_in_db(id)
-        send_email_to_applicant(email)
+        send_email_to_applicant(email,name,title)
         return redirect('/viewapplications')
 
 

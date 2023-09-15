@@ -6,7 +6,7 @@ from email.message import EmailMessage
 # from email.mime.multipart import MIMEMultipart
  
 
-def send_email_to_applicant(email):
+def send_email_to_applicant(email,name,title):
 
 
     # Set your Gmail email address and password
@@ -22,9 +22,9 @@ def send_email_to_applicant(email):
 
     # Email body
     body = f"""
-Dear [Applicant's Name],
+Dear {name},
 
-I hope this email finds you well. We are delighted to inform you that your application for the [Job Title] position at [Company Name] has been approved, and we would like to extend our warmest congratulations to you!
+I hope this email finds you well. We are delighted to inform you that your application for the {title} position at Chaynz Tech has been approved, and we would like to extend our warmest congratulations to you!
 
 Your qualifications, experience, and enthusiasm have stood out among our pool of applicants, and we believe that you will be a valuable addition to our team. We were particularly impressed by [mention a specific aspect of their application or interview that impressed the hiring team].
 
@@ -39,11 +39,11 @@ Now that your application has been approved, we kindly request that you complete
 3. Coordinate Your Start Date:
    Please let us know your availability to start your new position. We aim to accommodate your preferences as much as possible and ensure a seamless onboarding experience.
 
-Once again, congratulations on your job approval! We look forward to having you join the [Company Name] team and are excited about the contributions we know you will make.
+Once again, congratulations on your job approval! We look forward to having you join the Chaynz Tech team and are excited about the contributions we know you will make.
 
-If you have any further questions or need assistance with any part of the onboarding process, please feel free to contact us at [HR Contact Email] or [HR Contact Phone Number].
+If you have any further questions or need assistance with any part of the onboarding process, please feel free to contact us at xyz@gmail.com or +92xxxxxxxxx.
 
-Welcome aboard, [Applicant's Name], and here's to a successful journey ahead with [Company Name]!
+Welcome aboard, {name}, and here's to a successful journey ahead with Chaynz Tech!
 
 Best regards,"""
 
