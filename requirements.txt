@@ -2,3 +2,7 @@ gunicorn
 Flask
 sqlalchemy
 pymysql
+smtplib
+ssl
+email.message
+EmailMessage

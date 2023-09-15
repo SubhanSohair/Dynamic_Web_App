@@ -146,7 +146,7 @@ def delete_app(id):
 @app.route("/approveapp/<id>/<email>/<name>/<title>",methods = ['POST','GET'])
 def send_email(id,email,name,title):
         approve_app_in_db(id)
-        # send_email_to_applicant(email,name,title)
+        send_email_to_applicant(email,name,title)
         return redirect('/viewapplications')
 
 
