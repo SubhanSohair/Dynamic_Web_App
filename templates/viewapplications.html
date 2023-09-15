@@ -37,22 +37,53 @@
 
   
     <div class="col-3 mt-4">
-      
-      <form action="/approveapp/{{apps.email}}" method="post">
-      <button
-        type="submit"
-        class="btn btn-success mb-4 mt-3"
-        >Approve</button>
-      </form>
-        <br>
 
-        <form onsubmit="myFunction()" action="/deleteapp/{{apps.id}}" method="post">
+
+
+    {% if apps.approvals == 'Approved'  %}
+
+      <form action="/approveapp/{{apps.id}}/{{apps.email}}" method="post">
         <button
-        type="submit"
-        class="btn btn-danger"
-        style="margin-left: 8px;"
-        >Reject</button>
+          type="submit"
+          class="btn btn-success mb-4 mt-3">
+          <img src="static/person-check-fill.png" alt="">
+          Approved
+        </button>
         </form>
+          <br>
+  
+          <form onsubmit="myFunction()" action="/deleteapp/{{apps.id}}" method="post">
+          <button
+          type="submit"
+          class="btn btn-danger"
+          style="margin-left: 25px;"
+          >Reject</button>
+          </form>
+
+
+
+    {% else %}
+      
+<div style="margin-left: 17px;">
+
+      <form action="/approveapp/{{apps.id}}/{{apps.email}}" method="post">
+        <button
+          type="submit"
+          class="btn btn-success mb-4 mt-3"
+          >Approve</button>
+        </form>
+          <br>
+  
+          <form onsubmit="myFunction()" action="/deleteapp/{{apps.id}}" method="post">
+          <button
+          type="submit"
+          class="btn btn-danger"
+          style="margin-left: 8px;"
+          >Reject</button>
+          </form>
+        </div>
+
+    {% endif %}
 
     </div>
   </div>

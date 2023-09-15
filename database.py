@@ -108,13 +108,13 @@ def delete_job_from_db(id):
 
 
 apps_col_name = ('id', 'job_name', 'full_name', 'email',
-            'GitHub_URL', 'education', 'work_experience', 'resume_url')
+            'GitHub_URL', 'education', 'work_experience', 'resume_url', 'approvals')
 
 
 def load_apps_from_db():
 
     with engine.connect() as conn:
-        result = conn.execute(text("""SELECT applications.id, jobs.title AS job_name, applications.full_name, applications.email, applications.GitHub_URL,  applications.education, applications.work_experience, applications.resume_url
+        result = conn.execute(text("""SELECT applications.id, jobs.title AS job_name, applications.full_name, applications.email, applications.GitHub_URL,  applications.education, applications.work_experience, applications.resume_url, applications.approvals
                                       FROM applications
                                       INNER JOIN jobs ON applications.job_id = jobs.id;
                                       """))
@@ -142,7 +142,15 @@ def delete_app_from_db(id):
 
 # UPDATE "approvals" COlUMN IN DB TO APPROVE APPLICANTS
 
+  
+def approve_app_in_db(id):
+
+    with engine.connect() as conn:
+
+        query = text(f"UPDATE applications SET approvals = 'Approved' WHERE (id = {id});")
+
+        conn.execute(query)
 
 
-# UPDATE `dynamicwebapp`.`applications` SET `approvals` = 'Approved' WHERE (`id` = '2');
+# UPDATE applications SET approval = 'Approved' WHERE (id = {id});
 
