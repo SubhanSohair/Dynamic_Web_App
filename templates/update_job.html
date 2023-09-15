@@ -71,7 +71,7 @@
 
 <div class="container">
     <h2 style="margin-bottom: 30px;">Update "{{job.title}}" Job</h2>
-    <form method="post" action="/jobupdated/{{job.id}}" >
+    <form id="myForm"  method="post" action="/jobupdated/{{job.id}}" >
         <div class="form-group">
             <label for="title">Job Title:</label>
             <input value="{{job.title}}" type="text" id="title" name="title" required>
@@ -101,11 +101,22 @@
             <textarea id="requirements" name="requirements" rows="4" required>{{job.requirements}}</textarea>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn">Update</button>
+            <button onclick="confirmSubmission(event)" type="submit" class="btn">Update</button>
         </div>
     </form>
 </div>
 
+<script>
+    function confirmSubmission(event) {
+        event.preventDefault(); // Prevent the form from submitting immediately
 
+        if (window.confirm("Are you sure you want to Update the Job?")) {
+            // If the user confirms, submit the form
+            document.getElementById("myForm").submit();
+        } else {
+            // If the user cancels, do nothing
+        }
+    }
+</script>
 
 {% endblock %}
