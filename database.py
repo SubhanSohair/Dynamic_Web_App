@@ -151,6 +151,20 @@ def approve_app_in_db(id):
 
         conn.execute(query)
 
+
+
+
+def load_app_from_db(id):
+
+    with engine.connect() as conn:
+        result = conn.execute(text(f"SELECT * FROM applications WHERE id = {id}"))
+        rows = result.all()
+        if len(rows) == 0:
+            return None
+        else:
+            return dict(zip(apps_col_name, rows[0]))
+
+
 # UPDATES JOB INFO IN DB
 
 

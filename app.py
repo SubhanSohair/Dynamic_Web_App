@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for 
-from database import load_jobs_from_db, load_job_from_db, add_application_to_db,  load_admin_from_db, add_job_to_db, delete_job_from_db, load_apps_from_db, delete_app_from_db, approve_app_in_db, update_job_to_db
+from database import load_jobs_from_db, load_job_from_db, add_application_to_db,  load_admin_from_db, add_job_to_db, delete_job_from_db, load_apps_from_db, delete_app_from_db, approve_app_in_db, update_job_to_db, load_app_from_db
 from auto_email import send_email_to_applicant
 
 
@@ -143,8 +143,16 @@ def delete_app(id):
 #
 # This route fetches email and send email through the function written in auto_email.py
 #
-@app.route("/approveapp/<id>/<email>/<name>/<title>",methods = ['POST','GET'])
-def send_email(id,email,name,title):
+@app.route("/approveapp/<id>",methods = ['POST','GET'])
+def send_email(id):
+        
+        applicant = load_app_from_db(id)
+
+        email = applicant['email']
+        name = applicant['full_name']
+        title = applicant['job_name']
+
+
         approve_app_in_db(id)
         send_email_to_applicant(email,name,title)
         return redirect('/viewapplications')
