@@ -3,4 +3,4 @@ Flask
 sqlalchemy
 pymysql
 secure-smtplib
-email
+
